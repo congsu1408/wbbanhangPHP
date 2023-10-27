@@ -1,0 +1,64 @@
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #eeeeee;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.cart-table {
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.cart-table th {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cart-table td {
+    font-size: 14px;
+}
+
+.cart-table img {
+    width: 50px;
+    height: 50px;
+}
+
+.cart-table .update-form {
+    float: right;
+}
+
+.cart-table .update-form input {
+    width: 70px;
+}
+
+.cart-table .delete-link {
+    color: red;
+    text-decoration: none;
+}
+
+.btn-home{
+
+    left: 20px;
+    z-index: 100;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
