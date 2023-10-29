@@ -3,11 +3,37 @@ session_start();
 if (isset($_POST['dangnhap'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    if ($username == 'admin' && $password == 'admin') {
+
+    // Kết nối với database
+    $conn = mysqli_connect("localhost", "root", "", "websitebanhang");
+    if (!$conn) {
+        die("Không thể kết nối với database");
+    }
+
+    // Truy vấn database để lấy thông tin người dùng
+    $sql = "SELECT * FROM users WHERE username = '{$username}'";
+    $result = mysqli_query($conn, $sql);
+
+    // Kiểm tra xem người dùng có tồn tại không
+    if (mysqli_num_rows($result) == 0) {
+        mysqli_close($conn);
+        echo "<script>alert('Tên đăng nhập không tồn tại')</script>";
+        return;
+    }
+
+    // Lấy mật khẩu đã lưu trong database
+    $row = mysqli_fetch_assoc($result);
+    $password_hash = $row['password'];
+
+    // So sánh mật khẩu nhập vào với mật khẩu đã lưu
+    if ($password === $password_hash) {
+        // Đăng nhập thành công
+        mysqli_close($conn);
         $_SESSION['username'] = $username;
         header('location: http://localhost/PHP/home.php');
     } else {
-//        echo "Sai tên đăng nhập hoặc mật khẩu";
+        // Đăng nhập thất bại
+        mysqli_close($conn);
         echo "<script>alert('Sai tên đăng nhập hoặc mật khẩu')</script>";
     }
 }
