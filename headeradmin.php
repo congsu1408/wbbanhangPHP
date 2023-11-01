@@ -1,11 +1,3 @@
-<?php
-if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-    session_destroy();
-    header('Location: login.php'); // Điều hướng người dùng đến trang login.php sau khi đăng xuất
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,8 +45,10 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 <body>
 <header>
     <nav class="top-nav-bar">
-        <a href="http://localhost/PHP/home.php">Home</a>
-        <a href="http://localhost/PHP/order/getlistAddtocart/">Quản lý giỏ hàng</a>
+        <a href="http://localhost/PHP/admin/show">Dashboard</a>
+        <a href="http://localhost/PHP/customer/showCustomer/">Quản lý khách hàng</a>
+        <a href="http://localhost/PHP/order/showOrderStatus/">Quản lý đơn hàng</a>
+        <a href="http://localhost/PHP/product/manageProduct/">Quản lý sản phẩm</a>
 
         <!-- Nút đăng xuất -->
         <a href="logout.php">

@@ -34,12 +34,13 @@ session_start();
 
                 $password = $row['password'];
 
-                $decrypt = $password===$pass;
+                $decrypt = password_verify($pass, $password);
 
 
                 if ($decrypt) {
                     $_SESSION['id'] = $row['id'];
                     $_SESSION['username'] = $row['username'];
+                    $_SESSION['role'] = $row['role'];
                     header("location: home.php");
 
 
